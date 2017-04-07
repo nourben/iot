@@ -29,17 +29,15 @@ void setup() {
 void loop() {
   
    buttonState = digitalRead(pinBtn);
-     //Serial.print("buttonState : ");
-     //Serial.println(buttonState);
      
   if (buttonState == HIGH) {
-    if(number == 10)
-      number = 0;
-      /*
+      
       Serial.println("-----------");
+      Serial.print("buttonState : ");
+      Serial.println(buttonState);
+      Serial.print("number : ");
       Serial.println(number);
-      Serial.println(" ");
-      */    
+      
       if(number == 0){
         int MyArray[7] = {ledPinA, ledPinB, ledPinC, ledPinD, ledPinE, ledPinF, ledPinDP};
         draw(MyArray);
@@ -80,8 +78,17 @@ void loop() {
         int MyArray[7] = {ledPinA, ledPinB, ledPinC, ledPinD, ledPinF, ledPinG, ledPinDP};
         draw(MyArray);
       }
-      number = number+1;
-      delay(600);
+      
+      if(number<9)
+      {
+        number = number+1;
+      }
+      else if(number==9)
+      {
+        number = 0;
+      }
+      
+      delay(300);
   }
 
 }
